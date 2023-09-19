@@ -2,11 +2,11 @@
 import { CustomButtonProps } from '@/types';
 import React from 'react'
 
-function CustomButton({title,containerStyles,handleClick}:CustomButtonProps) {
+function CustomButton({title,containerStyles,handleClick,btnType="button"}:CustomButtonProps) {
   return (
     <button
     disabled={false}
-    type={"button"}
+    type={btnType}
     className={`custom-btn ${containerStyles}`}
     onClick={()=>{handleClick}}
     >
