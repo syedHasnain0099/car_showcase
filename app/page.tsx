@@ -1,10 +1,17 @@
 import { CarCard, Hero } from '@/components'
 import SearchBar from '@/components/SearchBar'
+import { HomeProps } from '@/types';
 import { carsApi } from '@/utils'
 import Image from 'next/image'
 
-export default async function Home() {
-  const allCars= await carsApi();
+export default async function Home({ searchParams }: HomeProps) {
+  const allCars= await carsApi({
+    manufacturer: searchParams.manufacturer || "",
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "",
+  });
   const isDataEmpty =!Array.isArray(allCars) || allCars.length < 1 || !allCars
   return (
     <main className="overflow-hidden">
@@ -26,9 +33,11 @@ export default async function Home() {
         {
           !isDataEmpty ?(
             <section>
+              <div className='home__cars-wrapper'>
               {allCars?.map((car)=>(
                 <CarCard car={car}/>
               ))}
+              </div>
             </section>
           ):(
             <div className='home__error-container'>
