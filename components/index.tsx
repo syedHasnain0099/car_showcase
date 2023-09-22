@@ -5,7 +5,8 @@ import Footer from './Footer'
 import SearchManufacturer from './SearchManufacturer'
 import CarCard from './CarCard'
 import CarDetails from './CarDetails'
-
+import CustomFilter from './CustomFilter'
+import ShowMore from './ShowMore'
 export {
     Hero,
     CustomButton,
@@ -13,5 +14,7 @@ export {
     Footer,
     SearchManufacturer,
     CarCard,
-    CarDetails
+    CarDetails,
+    CustomFilter,
+    ShowMore
 }
